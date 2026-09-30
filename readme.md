@@ -21,7 +21,7 @@ Sample data used across all stages:
 | Gemini |  Drafting README contents |
 
 Details per stage:
-- Stage 1: Used AI to understand how to draft the readme contents and use GIT. See the `ai-log/` folder.
+- Stage 1: Used AI to understand Git commands, set up the initial HTML semantic structure, and create the responsive CSS Grid/Flexbox layout for the mockup. Manual adjustments were made to the dark theme, specific CSS classes, and layout spacing. See the `ai-log/` folder.
 
 ## How to run
 Open `index.html` in a browser. No build step, no server.
@@ -36,7 +36,7 @@ Open `index.html` in a browser. No build step, no server.
 | S1-R1 | README: description, fields, sample data, how to run | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
 | S1-R2 | AI usage section | [README.md](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/readme.md) | read |
 | S1-R3 | AI log for stage 1 | [ai-log/etapa-01.md](https://github.com/RaduD15/SafeInstal/blob/main/ai-log/etapa-01.md) | read |
-| S1-R4 | header, form (text + select), 3 cards with own data | [index.html#L10-L64](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/indexhtml#L10-L64) | open the page |
+| S1-R4 | header, form (text + select), 3 cards with own data | [index.html#L10-L64](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/index.html#L10-L64) | open the page |
 | S1-R5 | finished card looks different | [style.css#L154-L161](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/style.css#L154-L161) | look at the card |
 | S1-R6 | 2 columns on desktop, 1 under 700px | [style.css#L199-L203](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/style.css#L199-L203) | resize < 700px |
 | S1-R7 | visible focus, readable dark theme | [style.css#L194-L225](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/style.css#L194-L225) | Tab; dark mode |
