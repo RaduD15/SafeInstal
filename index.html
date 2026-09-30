@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QuickInstal - Mockup</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>QuickInstal</h1>
+    <p>Gestionează eficient problemele și intervențiile clienților.</p>
+    <p class="app-count">3 intervenții, dintre care 2 nerezolvate</p>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Adaugă intervenție</h2>
+      <form class="item-form">
+        <label>Problema client 
+          <input type="text" name="titlu" placeholder="Ex: Scurgere țeavă baie" />
+        </label>
+        
+        <label>Prioritate
+          <select name="eticheta">
+            <option value="mica">Mică</option>
+            <option value="medie">Medie</option>
+            <option value="mare">Mare</option>
+          </select>
+        </label>
+        
+        <button type="submit">Adaugă</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Intervențiile clienților</h2>
+      <!-- Când lista e goală: <p class="empty">Nu există nicio intervenție.</p> -->
+      <ul class="item-list">
+        <li class="item-card">
+          <div>
+            <h3>Scurgere țeavă baie principală</h3>
+            <span class="badge badge-mare">Prioritate mare</span>
+          </div>
+          <span class="status">Nerezolvată</span>
+        </li>
+        
+        <li class="item-card done">
+          <div>
+            <h3>Verificare anuală centrală termică</h3>
+            <span class="badge badge-medie">Prioritate medie</span>
+          </div>
+          <span class="status">Rezolvată</span>
+        </li>
+        
+        <li class="item-card">
+          <div>
+            <h3>Înlocuire robinet calorifer</h3>
+            <span class="badge badge-mica">Prioritate mică</span>
+          </div>
+          <span class="status">Nerezolvată</span>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="app-footer">Proiect Tehnologii Web - SafeInstal</footer>
+</body>
+</html>
