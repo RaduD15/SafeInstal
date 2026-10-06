@@ -47,8 +47,8 @@ Open `index.html` in a browser. No build step, no server.
 | --- | --- | --- | --- |
 | S2-R1 | JS file linked, logs on page load | [index.html#L66](https://github.com/RaduD15/SafeInstal/blob/main/index.html#L66) | open page, F12 |
 | S2-R2 | 3+ items with id, name, state, tag | [interventii.js#L2-L6](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L2-L6) | read |
-| S2-R3 | list, count, search, add, toggle, delete | [interventii.js#L63-L82](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L63-L82) | console output |
-| S2-R4 | add rejects empty name and invalid tag | [interventii.js#L81-L82](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L81-L82) | last 2 console lines |
+| S2-R3 | list, count, search, add, toggle, delete | [interventii.js#L10-L67](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L10-L67) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [interventii.js#L30-L37](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L30-L37) | last 2 console lines |
 | S2-R5 | original array unchanged after add | [interventii.js#L71](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L71) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
-| S2-R7 | commit "Stage 2" pushed | [commit AICI](https://github.com/RaduD15/SafeInstal/commit/AICI) | commit history |
+| S2-R7 | commit "Stage 2" pushed | [commitcb2045e](https://github.com/RaduD15/SafeInstal/commit/cb2045e59b7ad93d0c324066c5cae474e99cfa8e) | commit history |
