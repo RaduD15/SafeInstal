@@ -17,20 +17,20 @@ Sample data used across all stages:
 
 ## AI usage
 | Tool | Used for |
-| --- | --- |
-| Gemini |  Drafting README contents |
-
+| Gemini | Drafting README contents, HTML/CSS layout, and JS logic |
 Details per stage:
 - Stage 1: Used AI to understand Git commands, set up the initial HTML semantic structure, and create the responsive CSS Grid/Flexbox layout for the mockup. Manual adjustments were made to the dark theme, specific CSS classes, and layout spacing. See the `ai-log/` folder.
+- Stage 2: Used AI to generate the immutable JavaScript array methods (map, filter, reduce) and console tests according to the assignment requirements. See the `ai-log/` folder.
+
 
 ## How to run
 Open `index.html` in a browser. No build step, no server.
 
 ## Status
 - [x] Stage 1: static mockup
-- [ ] Stage 2: data logic in JavaScript
+- [X] Stage 2: data logic in JavaScript
 
-## Checklist
+## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
 | S1-R1 | README: description, fields, sample data, how to run | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
@@ -41,3 +41,14 @@ Open `index.html` in a browser. No build step, no server.
 | S1-R6 | 2 columns on desktop, 1 under 700px | [style.css#L199-L203](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/style.css#L199-L203) | resize < 700px |
 | S1-R7 | visible focus, readable dark theme | [style.css#L194-L225](https://github.com/RaduD15/SafeInstal/blob/4e3792314524a5aff2f8912e1c15098d907c022e/style.css#L194-L225) | Tab; dark mode |
 | S1-R8 | commit "Stage 1" pushed | [commit 4e37923](https://github.com/RaduD15/SafeInstal/commit/4e3792314524a5aff2f8912e1c15098d907c022e) | commit history |
+
+## Stage 2 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S2-R1 | JS file linked, logs on page load | [index.html#L66](https://github.com/RaduD15/SafeInstal/blob/main/index.html#L66) | open page, F12 |
+| S2-R2 | 3+ items with id, name, state, tag | [interventii.js#L2-L6](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L2-L6) | read |
+| S2-R3 | list, count, search, add, toggle, delete | [interventii.js#L63-L82](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L63-L82) | console output |
+| S2-R4 | add rejects empty name and invalid tag | [interventii.js#L81-L82](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L81-L82) | last 2 console lines |
+| S2-R5 | original array unchanged after add | [interventii.js#L71](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L71) | console line |
+| S2-R6 | README Stage 2 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
+| S2-R7 | commit "Stage 2" pushed | [commit AICI](https://github.com/RaduD15/SafeInstal/commit/AICI) | commit history |
