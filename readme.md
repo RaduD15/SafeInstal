@@ -17,18 +17,26 @@ Sample data used across all stages:
 
 ## AI usage
 | Tool | Used for |
-| Gemini | Drafting README contents, HTML/CSS layout, and JS logic |
+| --- | --- |
+| Gemini | Drafting README contents, HTML/CSS layout, JS logic, and Vite/React setup |
+
 Details per stage:
 - Stage 1: Used AI to understand Git commands, set up the initial HTML semantic structure, and create the responsive CSS Grid/Flexbox layout for the mockup. Manual adjustments were made to the dark theme, specific CSS classes, and layout spacing. See the `ai-log/` folder.
 - Stage 2: Used AI to generate the immutable JavaScript array methods (map, filter, reduce) and console tests according to the assignment requirements. See the `ai-log/` folder.
+- Stage 3: Used AI to guide the Vite project initialization, file cleanup, JSX conversion, and README updates according to the lab requirements. See the `ai-log/` folder.
+
 
 
 ## How to run
-Open `index.html` in a browser. No build step, no server.
+cd frontend
+npm install
+npm run dev
+Then open the address printed in the terminal (http://localhost:5173).
 
 ## Status
 - [x] Stage 1: static mockup
-- [X] Stage 2: data logic in JavaScript
+- [x] Stage 2: data logic in JavaScript
+- [x] Stage 3: Vite and React project
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -51,4 +59,15 @@ Open `index.html` in a browser. No build step, no server.
 | S2-R4 | add rejects empty name and invalid tag | [interventii.js#L30-L37](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L30-L37) | last 2 console lines |
 | S2-R5 | original array unchanged after add | [interventii.js#L71](https://github.com/RaduD15/SafeInstal/blob/main/interventii.js#L71) | console line |
 | S2-R6 | README Stage 2 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
-| S2-R7 | commit "Stage 2" pushed | [commitcb2045e](https://github.com/RaduD15/SafeInstal/commit/cb2045e59b7ad93d0c324066c5cae474e99cfa8e) | commit history |
+| S2-R7 | commit "Stage 2" pushed | [commit cb2045e](https://github.com/RaduD15/SafeInstal/commit/cb2045e59b7ad93d0c324066c5cae474e99cfa8e) | commit history |
+
+## Stage 3 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S3-R1 | npm run dev starts without errors | [frontend/package.json](https://github.com/RaduD15/SafeInstal/blob/main/frontend/package.json) | npm install, npm run dev |
+| S3-R2 | app name and counter computed from data | [frontend/src/App.jsx#L12-L17](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L12-L17) | edit data, save |
+| S3-R3 | data from README, not from the example | [frontend/src/App.jsx#L1-L5](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L1-L5) | compare with README |
+| S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.css) | look at the page |
+| S3-R5 | node_modules ignored, build passes | [frontend/.gitignore](https://github.com/RaduD15/SafeInstal/blob/main/frontend/.gitignore) | npm run build |
+| S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/README.md) | read |
+| S3-R7 | commit "Stage 3" pushed | [commit](https://github.com/RaduD15/SafeInstal/I) | commit history |
