@@ -69,5 +69,5 @@ Then open the address printed in the terminal (http://localhost:5173).
 | S3-R3 | data from README, not from the example | [frontend/src/App.jsx#L1-L5](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L1-L5) | compare with README |
 | S3-R4 | stage 1 styles reused | [frontend/src/App.css](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.css) | look at the page |
 | S3-R5 | node_modules ignored, build passes | [frontend/.gitignore](https://github.com/RaduD15/SafeInstal/blob/main/frontend/.gitignore) | npm run build |
-| S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/README.md) | read |
-| S3-R7 | commit "Stage 3" pushed | [commit](https://github.com/RaduD15/SafeInstal/I) | commit history |
+| S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
+| S3-R7 | commit "Stage 3" pushed | [commit 56e34fc](https://github.com/RaduD15/SafeInstal/commit/56e34fc06bc2d70f918077bbd6de99ad4e9a0c26) | commit history |
