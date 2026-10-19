@@ -77,9 +77,9 @@ Then open the address printed in the terminal (http://localhost:5173).
 ## Stage 4 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S4-R1 | List component, `.map()`, `key` | [InterventieList.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx) | read code |
-| S4-R2 | Card component uses props | [InterventieCard.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieCard.jsx) | read code |
-| S4-R3 | App computes counters, passes data to List | [App.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx) | read code |
-| S4-R4 | empty list handled conditionally | [InterventieList.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx) | delete data, save, look at page |
+| S4-R1 | List component, `.map()`, `key` | [InterventieList.jsx#L9-L14](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx#L9-L14) | read code |
+| S4-R2 | Card component uses props | [InterventieCard.jsx#L7-L18](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieCard.jsx#L7-L18) | read code |
+| S4-R3 | App computes counters, passes data to List | [App.jsx#L9-L25](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L9-L25) | read code |
+| S4-R4 | empty list handled conditionally | [InterventieList.jsx#L4-L6](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx#L4-L6) | delete data, save, look at page |
 | S4-R5 | README Stage 4 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
 | S4-R6 | commit "Stage 4" pushed | [commit 6c155c4](https://github.com/RaduD15/SafeInstal/commit/6c155c4f2ebf482c24aeda4edbd7d9460316c5a4) | commit history |
