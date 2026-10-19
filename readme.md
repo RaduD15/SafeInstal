@@ -24,7 +24,7 @@ Details per stage:
 - Stage 1: Used AI to understand Git commands, set up the initial HTML semantic structure, and create the responsive CSS Grid/Flexbox layout for the mockup. Manual adjustments were made to the dark theme, specific CSS classes, and layout spacing. See the `ai-log/` folder.
 - Stage 2: Used AI to generate the immutable JavaScript array methods (map, filter, reduce) and console tests according to the assignment requirements. See the `ai-log/` folder.
 - Stage 3: Used AI to guide the Vite project initialization, file cleanup, JSX conversion, and README updates according to the lab requirements. See the `ai-log/` folder.
-
+- Stage 4: Used AI to split the UI into React components (InterventieList and InterventieCard), pass data via props, implement conditional rendering for empty lists, and map array items with unique keys. See the `ai-log/` folder.
 
 
 ## How to run
@@ -37,6 +37,7 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
+- [x] Stage 4: components rendered from data
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -71,3 +72,14 @@ Then open the address printed in the terminal (http://localhost:5173).
 | S3-R5 | node_modules ignored, build passes | [frontend/.gitignore](https://github.com/RaduD15/SafeInstal/blob/main/frontend/.gitignore) | npm run build |
 | S3-R6 | README Stage 3 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
 | S3-R7 | commit "Stage 3" pushed | [commit 56e34fc](https://github.com/RaduD15/SafeInstal/commit/56e34fc06bc2d70f918077bbd6de99ad4e9a0c26) | commit history |
+
+
+## Stage 4 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S4-R1 | List component, `.map()`, `key` | [InterventieList.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx) | read code |
+| S4-R2 | Card component uses props | [InterventieCard.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieCard.jsx) | read code |
+| S4-R3 | App computes counters, passes data to List | [App.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx) | read code |
+| S4-R4 | empty list handled conditionally | [InterventieList.jsx](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx) | delete data, save, look at page |
+| S4-R5 | README Stage 4 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
+| S4-R6 | commit "Stage 4" pushed | [commit hash]() | commit history |

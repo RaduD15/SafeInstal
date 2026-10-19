@@ -1,4 +1,4 @@
-const interventii = [
+import InterventieList from "./Components/InterventieList.jsx";const interventii = [
   { id: 1, titlu: "Scurgere țeavă baie principală", rezolvata: false, prioritate: "mare" },
   { id: 2, titlu: "Verificare anuală centrală termică", rezolvata: true, prioritate: "medie" },
   { id: 3, titlu: "Înlocuire robinet calorifer", rezolvata: false, prioritate: "mica" }
@@ -19,8 +19,9 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <h2>Intervențiile clienților</h2>
-          {/* Temporar: date brute; componentele apar in Etapa 4 */}
-          <pre>{JSON.stringify(interventii, null, 2)}</pre>
+          
+          {/* Trimitem array-ul către componenta copil */}
+          <InterventieList interventii={interventii} />
         </section>
       </main>
     </>
