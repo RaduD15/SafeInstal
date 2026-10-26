@@ -25,6 +25,7 @@ Details per stage:
 - Stage 2: Used AI to generate the immutable JavaScript array methods (map, filter, reduce) and console tests according to the assignment requirements. See the `ai-log/` folder.
 - Stage 3: Used AI to guide the Vite project initialization, file cleanup, JSX conversion, and README updates according to the lab requirements. See the `ai-log/` folder.
 - Stage 4: Used AI to split the UI into React components (InterventieList and InterventieCard), pass data via props, implement conditional rendering for empty lists, and map array items with unique keys. See the `ai-log/` folder.
+- Stage 5: Used AI to move the data array into React state (`useState`), implement immutable toggle and delete functions, lift state up to the App component, and add a toggleable dark mode theme. See the `ai-log/` folder.
 
 
 ## How to run
@@ -38,6 +39,7 @@ Then open the address printed in the terminal (http://localhost:5173).
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
+- [x] Stage 5: local state and events
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -83,3 +85,15 @@ Then open the address printed in the terminal (http://localhost:5173).
 | S4-R4 | empty list handled conditionally | [InterventieList.jsx#L4-L6](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx#L4-L6) | delete data, save, look at page |
 | S4-R5 | README Stage 4 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
 | S4-R6 | commit "Stage 4" pushed | [commit 6c155c4](https://github.com/RaduD15/SafeInstal/commit/6c155c4f2ebf482c24aeda4edbd7d9460316c5a4) | commit history |
+
+
+## Stage 5 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S5-R1 | list kept in state, in `App` | [App.jsx#L15-L16](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L15-L16) | read code |
+| S5-R2 | immutable toggle item function | [App.jsx#L18-L22](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L18-L22) | click checkbox, look at page |
+| S5-R3 | immutable delete item function | [App.jsx#L24-L26](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L24-L26) | click delete, look at page |
+| S5-R4 | state functions passed as props | [InterventieList.jsx#L12-L17](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/Components/InterventieList.jsx#L12-L17) | read code |
+| S5-R5 | theme state and toggle button | [App.jsx#L28-L32](https://github.com/RaduD15/SafeInstal/blob/main/frontend/src/App.jsx#L28-L32) | click theme button, look at page |
+| S5-R6 | README Stage 5 section + AI log | [README.md](https://github.com/RaduD15/SafeInstal/blob/main/readme.md) | read |
+| S5-R7 | commit "Stage 5" pushed | [commit 54081cd](https://github.com/RaduD15/SafeInstal/commit/54081cdecd6604d3db1490b0c2d8744111b8f592) | commit history |
