@@ -25,6 +25,7 @@ body {
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;
+  transition: background-color 0.3s, color 0.3s; 
 }
 
 .app-header {
@@ -32,6 +33,7 @@ body {
   color: white;
   text-align: center;
   padding: 24px 16px;
+  position: relative; 
 }
 
 .app-header h1 {
@@ -47,12 +49,31 @@ body {
   opacity: 0.9;
 }
 
+/* === ETAPA 5: Butonul de schimbare a temei === */
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  padding: 6px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+  background: transparent;
+  color: white;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.theme-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
 .container {
   max-width: 1000px;
   margin: 24px auto;
   padding: 0 16px;
   display: grid;
-  /* Etapa 3: doar panoul cu date; a doua coloană revine în Etapa 7 */
   grid-template-columns: 1fr;
   gap: 24px;
   align-items: start;
@@ -138,6 +159,21 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+/*Checkbox și structură card*/
+.item-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+}
+
+.item-main input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
 .item-card h3 {
   margin: 0 0 6px 0;
   font-size: 1.1rem;
@@ -180,6 +216,25 @@ body {
   color: var(--badge-mare-text);
 }
 
+/* ETAPA 5: Buton de ștergere */
+.btn-danger {
+  border: 1px solid #ef4444;
+  background: transparent;
+  color: #ef4444;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-danger:hover {
+  background: #ef4444;
+  color: white;
+}
+
 .app-footer {
   text-align: center;
   padding: 24px 16px;
@@ -198,8 +253,9 @@ body {
   }
 }
 
+/* Logica pentru Dark Mode (Sistem + Manual) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --bg: #0f172a;
     --card: #1e293b;
     --text: #f8fafc;
@@ -215,9 +271,32 @@ body {
     --badge-mare-text: #fca5a5;
   }
   
-  .item-form input, 
-  .item-form select {
+  :root:not([data-theme="light"]) .item-form input, 
+  :root:not([data-theme="light"]) .item-form select {
     background: #0f172a;
     color: #f8fafc;
   }
+}
+
+/* Forțare manuală Dark Mode prin click pe buton */
+:root[data-theme="dark"] {
+  --bg: #0f172a;
+  --card: #1e293b;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --border: #334155;
+  --accent-soft: #0c4a6e;
+  
+  --badge-mica-bg: #064e3b;
+  --badge-mica-text: #6ee7b7;
+  --badge-medie-bg: #78350f;
+  --badge-medie-text: #fcd34d;
+  --badge-mare-bg: #7f1d1d;
+  --badge-mare-text: #fca5a5;
+}
+
+:root[data-theme="dark"] .item-form input, 
+:root[data-theme="dark"] .item-form select {
+  background: #0f172a;
+  color: #f8fafc;
 }
