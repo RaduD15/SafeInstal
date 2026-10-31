@@ -1,4 +1,4 @@
-{ box-sizing: border-box; }
+* { box-sizing: border-box; }
 
 :root {
   --bg: #f4f5f7;
@@ -9,6 +9,8 @@
   --accent-dark: #0369a1;
   --accent-soft: #e0f2fe;
   --border: #e5e7eb;
+  --on-accent: #ffffff;
+  --shadow: rgba(0, 0, 0, 0.05);
   
   /* Culori pentru priorități */
   --badge-mica-bg: #d1fae5;
@@ -30,7 +32,7 @@ body {
 
 .app-header {
   background-color: var(--accent);
-  color: white;
+  color: var(--on-accent);
   text-align: center;
   padding: 24px 16px;
 }
@@ -102,7 +104,7 @@ body {
 
 .item-form button {
   background-color: var(--accent);
-  color: white;
+  color: var(--on-accent);
   border: none;
   padding: 12px;
   border-radius: 6px;
@@ -138,7 +140,7 @@ body {
 
 .item-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 8px var(--shadow);
 }
 
 .item-card h3 {
@@ -217,11 +219,5 @@ body {
     --badge-medie-text: #fcd34d;
     --badge-mare-bg: #7f1d1d;
     --badge-mare-text: #fca5a5;
-  }
-  
-  .item-form input, 
-  .item-form select {
-    background: #0f172a;
-    color: #f8fafc;
   }
 }

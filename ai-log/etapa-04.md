@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [https://share.gemini.google/ZZQGPeeCQ2js]
+- https://share.gemini.google/ZZQGPeeCQ2js
 
 ## Key requests
 

@@ -3,6 +3,9 @@
 ## Tools
 - Gemini
 
+## Conversations
+- The share link for this conversation was not saved.
+
 ## Key requests
 
 ### 1. Generating the JavaScript logic
