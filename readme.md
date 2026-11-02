@@ -27,6 +27,7 @@ Details per stage:
 - Stage 3: Used AI to guide the Vite project initialization, file cleanup, JSX conversion, and README updates according to the lab requirements. See the `ai-log/` folder.
 - Stage 4: Used AI to split the UI into React components (InterventieList and InterventieCard), pass data via props, implement conditional rendering for empty lists, and map array items with unique keys. See the `ai-log/` folder.
 - Stage 5: Used AI to move the data array into React state (`useState`), implement immutable toggle and delete functions, lift state up to the App component, and add a toggleable dark mode theme. See the `ai-log/` folder.
+- Stage 6: Used AI to move the data into `db.json` served by json-server, write the fetch function in `api.js`, load the list with `useEffect`, and handle the loading and error states. See the `ai-log/` folder.
 
 
 ## How to run
@@ -58,13 +59,21 @@ and the counters in the header follow automatically. A button in the
 header switches between light and dark mode. Changes are lost on refresh,
 which is what stage 6 and stage 10 fix.
 
+## Stage 6: data from a mock API
+The list is served by json-server from `db.json`. The app fetches it on load
+and shows a loading state and an error state.
+
+    npm run api   # terminal 1, http://localhost:3001
+    npm run dev   # terminal 2, http://localhost:5173
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
 - [x] Stage 3: Vite and React project
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
-- [ ] Stage 6: loading data from a mock API
+- [x] Stage 6: data from a mock API
+- [ ] Stage 7: form and validation
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -124,3 +133,14 @@ which is what stage 6 and stage 10 fix.
 | S5-R8 | commit "Stage 5" pushed | [commit 54081cd](https://github.com/RaduD15/SafeInstal/commit/54081cdecd6604d3db1490b0c2d8744111b8f592) | commit history |
 
 
+
+## Stage 6 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L11](frontend/package.json#L11), [db.json](frontend/db.json) | open localhost:3001/interventii |
+| S6-R2 | data no longer in React code | [App.jsx#L10](frontend/src/App.jsx#L10) (useState([])) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L108](frontend/src/App.jsx#L108) | --delay 4000 |
+| S6-R4 | error message when API is down | [App.jsx#L109-L113](frontend/src/App.jsx#L109-L113) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L2-L10](frontend/src/api.js#L2-L10), [.env.example](frontend/.env.example) | search for fetch |
+| S6-R6 | README Stage 6 section + AI log | [README.md](#stage-6-data-from-a-mock-api), [ai-log/etapa-06.md](ai-log/etapa-06.md) | read |
+| S6-R7 | commit "Stage 6" pushed | [commit HASH](https://github.com/RaduD15/SafeInstal/commit/HASH) | commit history |

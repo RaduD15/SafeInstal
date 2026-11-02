@@ -530,3 +530,14 @@ body {
   --badge-mare-bg: #7f1d1d;
   --badge-mare-text: #fca5a5;
 }
+
+/* ===== Etapa 6: stări de încărcare și de eroare ===== */
+.info { color: var(--muted); }
+
+.error {
+  color: var(--danger);
+  background: var(--danger-soft);
+  border: 1px solid var(--danger);
+  border-radius: 8px;
+  padding: 10px 12px;
+}

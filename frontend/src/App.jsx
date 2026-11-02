@@ -1,19 +1,39 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import InterventieList from "./components/InterventieList.jsx";
-
-const INTERVENTII_INITIALE = [
-  { id: 1, titlu: "Scurgere țeavă baie principală", rezolvata: false, prioritate: "mare" },
-  { id: 2, titlu: "Verificare anuală centrală termică", rezolvata: true, prioritate: "medie" },
-  { id: 3, titlu: "Înlocuire robinet calorifer", rezolvata: false, prioritate: "mica" }
-];
+import { fetchInterventii } from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
 }
 
 export default function App() {
-  const [interventii, setInterventii] = useState(INTERVENTII_INITIALE);
+  const [interventii, setInterventii] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [tema, setTema] = useState(temaInitiala);
+
+  // Rulează o singură dată, după prima randare
+  useEffect(() => {
+    let ignore = false; // nu se setează state dacă componenta a dispărut între timp
+
+    async function load() {
+      try {
+        const data = await fetchInterventii();
+        if (!ignore) setInterventii(data);
+      } catch (err) {
+        if (!ignore) setError(err.message);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    }
+
+    load();
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
+  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
 
   function handleToggle(id) {
     setInterventii((prev) =>
@@ -85,11 +105,19 @@ export default function App() {
             <h2>Intervențiile clienților</h2>
             <span className="panel-pill">{nerezolvate} active</span>
           </div>
-          <InterventieList
-            interventii={interventii}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
+          {loading && <p className="info">Se încarcă intervențiile...</p>}
+          {error && (
+            <p className="error" role="alert">
+              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+            </p>
+          )}
+          {!loading && !error && (
+            <InterventieList
+              interventii={interventii}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
         </section>
       </main>
       <footer className="app-footer">Proiect Tehnologii Web · SafeInstal</footer>
