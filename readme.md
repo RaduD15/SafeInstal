@@ -143,4 +143,4 @@ and shows a loading state and an error state.
 | S6-R4 | error message when API is down | [App.jsx#L109-L113](frontend/src/App.jsx#L109-L113) | stop npm run api, refresh |
 | S6-R5 | fetch only in api.js, URL from env | [api.js#L2-L10](frontend/src/api.js#L2-L10), [.env.example](frontend/.env.example) | search for fetch |
 | S6-R6 | README Stage 6 section + AI log | [README.md](#stage-6-data-from-a-mock-api), [ai-log/etapa-06.md](ai-log/etapa-06.md) | read |
-| S6-R7 | commit "Stage 6" pushed | [commit HASH](https://github.com/RaduD15/SafeInstal/commit/HASH) | commit history |
+| S6-R7 | commit "Stage 6" pushed | [commit 506e88d ](https://github.com/RaduD15/SafeInstal/commit/506e88db3f1134a5111fa4cc80553da3e3c91389) | commit history |
