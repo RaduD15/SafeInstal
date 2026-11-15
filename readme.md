@@ -162,4 +162,4 @@ in the list.
 | S7-R5 | button disabled while sending, form cleared only on success | [InterventieForm.jsx#L24-L42](frontend/src/components/InterventieForm.jsx#L24-L42), [InterventieForm.jsx#L77](frontend/src/components/InterventieForm.jsx#L77) | --delay 3000; stop API and submit |
 | S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](tw.json), [InterventieCard.jsx#L11-L34](frontend/src/components/InterventieCard.jsx#L11-L34) | querySelectorAll in the console |
 | S7-R7 | README Stage 7 section + AI log | [README.md](#stage-7-form-and-validation), [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
-| S7-R8 | commit "Stage 7" pushed | [commit HASH](https://github.com/RaduD15/SafeInstal/commit/HASH) | commit history |
+| S7-R8 | commit "Stage 7" pushed | [commit a895601](https://github.com/RaduD15/SafeInstal/commit/a8956014647c23a3ba8ec268a92f11a0c04e85b4) | commit history |
