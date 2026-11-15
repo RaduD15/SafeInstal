@@ -70,7 +70,7 @@ body {
 }
 
 .header-inner {
-  max-width: 760px;
+  max-width: 1008px;
   margin: 0 auto;
 }
 
@@ -168,11 +168,12 @@ body {
 
 /* ===== Conținut ===== */
 .container {
-  max-width: 760px;
+  max-width: 1040px;
   margin: -20px auto 24px;
   padding: 0 16px;
   display: grid;
-  grid-template-columns: 1fr;
+  /* Etapa 7: formularul în stânga, lista în dreapta */
+  grid-template-columns: 1fr 2fr;
   gap: 24px;
   align-items: start;
 }
@@ -540,4 +541,18 @@ body {
   border: 1px solid var(--danger);
   border-radius: 8px;
   padding: 10px 12px;
+}
+
+/* Etapa 7: buton dezactivat cât timp se trimite */
+.item-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.item-form input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.item-form .error {
+  margin: 0;
 }

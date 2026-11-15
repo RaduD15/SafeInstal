@@ -1,0 +1,6 @@
+{
+  "resource": "interventii",
+  "title": "titlu",
+  "done": "rezolvata",
+  "sample": { "prioritate": "mare" }
+}

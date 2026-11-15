@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import InterventieList from "./components/InterventieList.jsx";
-import { fetchInterventii } from "./api.js";
+import InterventieForm from "./components/InterventieForm.jsx";
+import {
+  createInterventie,
+  deleteInterventie,
+  fetchInterventii,
+  updateInterventie,
+} from "./api.js";
 
 function temaInitiala() {
   return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
@@ -33,16 +39,29 @@ export default function App() {
     };
   }, []);
 
-  // În Etapa 6 modificările rămân locale: se pierd la refresh (rezolvat în Etapa 7)
-
-  function handleToggle(id) {
-    setInterventii((prev) =>
-      prev.map((t) => (t.id === id ? { ...t, rezolvata: !t.rezolvata } : t))
-    );
+  // Întâi serverul, apoi state-ul: pe ecran ajunge doar ce s-a salvat
+  async function handleAdd(interventie) {
+    const creata = await createInterventie(interventie); // serverul întoarce elementul cu id
+    setInterventii((prev) => [...prev, creata]);
   }
 
-  function handleDelete(id) {
-    setInterventii((prev) => prev.filter((t) => t.id !== id));
+  async function handleToggle(id) {
+    const interventie = interventii.find((t) => t.id === id);
+    try {
+      const actualizata = await updateInterventie(id, { rezolvata: !interventie.rezolvata });
+      setInterventii((prev) => prev.map((t) => (t.id === id ? actualizata : t)));
+    } catch (err) {
+      setError(err.message);
+    }
+  }
+
+  async function handleDelete(id) {
+    try {
+      await deleteInterventie(id);
+      setInterventii((prev) => prev.filter((t) => t.id !== id));
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   function handleTema() {
@@ -102,16 +121,27 @@ export default function App() {
       <main className="container">
         <section className="panel">
           <div className="panel-head">
+            <h2>Adaugă intervenție</h2>
+          </div>
+          <InterventieForm onAdd={handleAdd} />
+        </section>
+
+        <section className="panel">
+          <div className="panel-head">
             <h2>Intervențiile clienților</h2>
             <span className="panel-pill">{nerezolvate} active</span>
           </div>
-          {loading && <p className="info">Se încarcă intervențiile...</p>}
-          {error && (
-            <p className="error" role="alert">
-              Nu am putut încărca datele: {error}. Rulează <code>npm run api</code>?
+          {loading && (
+            <p className="info" data-testid="loading">
+              Se încarcă intervențiile...
             </p>
           )}
-          {!loading && !error && (
+          {error && (
+            <p className="error" role="alert" data-testid="error">
+              {error}
+            </p>
+          )}
+          {!loading && (
             <InterventieList
               interventii={interventii}
               onToggle={handleToggle}

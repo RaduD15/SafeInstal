@@ -4,7 +4,7 @@
 - Gemini
 
 ## Conversations
-- [https://share.gemini.google/BMAGtBCgs9js] (Setting up json-server, fetching API data with useEffect, handling loading and error states)
+- [https://share.gemini.google/kBTQgyFlLVDx] (Setting up json-server, fetching API data with useEffect, handling loading and error states)
 
 ## Key requests
 

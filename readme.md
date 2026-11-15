@@ -28,6 +28,7 @@ Details per stage:
 - Stage 4: Used AI to split the UI into React components (InterventieList and InterventieCard), pass data via props, implement conditional rendering for empty lists, and map array items with unique keys. See the `ai-log/` folder.
 - Stage 5: Used AI to move the data array into React state (`useState`), implement immutable toggle and delete functions, lift state up to the App component, and add a toggleable dark mode theme. See the `ai-log/` folder.
 - Stage 6: Used AI to move the data into `db.json` served by json-server, write the fetch function in `api.js`, load the list with `useEffect`, and handle the loading and error states. See the `ai-log/` folder.
+- Stage 7: Used AI to add the shared `request` function and the POST/PATCH/DELETE calls in `api.js`, write the controlled and validated `InterventieForm`, move toggle and delete to the server, and add `tw.json` and the `data-testid` attributes for the automated check. See the `ai-log/` folder.
 
 
 ## How to run
@@ -66,6 +67,11 @@ and shows a loading state and an error state.
     npm run api   # terminal 1, http://localhost:3001
     npm run dev   # terminal 2, http://localhost:5173
 
+## Stage 7: form and validation
+Interventions can be added from the page. The form is controlled and validated,
+and every change (add, toggle, delete) goes to the API before it shows up
+in the list.
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -73,7 +79,8 @@ and shows a loading state and an error state.
 - [x] Stage 4: components rendered from data
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
-- [ ] Stage 7: form and validation
+- [x] Stage 7: form and validation
+- [ ] Stage 8: routing and detail page
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -137,10 +144,22 @@ and shows a loading state and an error state.
 ## Stage 6 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S6-R1 | npm run api starts, route shows JSON | [package.json#L11](frontend/package.json#L11), [db.json](frontend/db.json) | open localhost:3001/interventii |
-| S6-R2 | data no longer in React code | [App.jsx#L10](frontend/src/App.jsx#L10) (useState([])) | read |
-| S6-R3 | loading message while waiting | [App.jsx#L108](frontend/src/App.jsx#L108) | --delay 4000 |
-| S6-R4 | error message when API is down | [App.jsx#L109-L113](frontend/src/App.jsx#L109-L113) | stop npm run api, refresh |
-| S6-R5 | fetch only in api.js, URL from env | [api.js#L2-L10](frontend/src/api.js#L2-L10), [.env.example](frontend/.env.example) | search for fetch |
+| S6-R1 | npm run api starts, route shows JSON | [package.json#L11](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/package.json#L11), [db.json](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/db.json) | open localhost:3001/interventii |
+| S6-R2 | data no longer in React code | [App.jsx#L10](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/src/App.jsx#L10) (useState([])) | read |
+| S6-R3 | loading message while waiting | [App.jsx#L108](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/src/App.jsx#L108) | --delay 4000 |
+| S6-R4 | error message when API is down | [App.jsx#L109-L113](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/src/App.jsx#L109-L113) | stop npm run api, refresh |
+| S6-R5 | fetch only in api.js, URL from env | [api.js#L2-L10](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/src/api.js#L2-L10), [.env.example](https://github.com/RaduD15/SafeInstal/blob/506e88db3f1134a5111fa4cc80553da3e3c91389/frontend/.env.example) | search for fetch |
 | S6-R6 | README Stage 6 section + AI log | [README.md](#stage-6-data-from-a-mock-api), [ai-log/etapa-06.md](ai-log/etapa-06.md) | read |
 | S6-R7 | commit "Stage 6" pushed | [commit 506e88d ](https://github.com/RaduD15/SafeInstal/commit/506e88db3f1134a5111fa4cc80553da3e3c91389) | commit history |
+
+## Stage 7 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S7-R1 | controlled form: value + onChange on every field | [InterventieForm.jsx#L48-L70](frontend/src/components/InterventieForm.jsx#L48-L70) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [InterventieForm.jsx#L17-L22](frontend/src/components/InterventieForm.jsx#L17-L22) (valideaza) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L43-L46](frontend/src/App.jsx#L43-L46) (handleAdd), [api.js#L5-L23](frontend/src/api.js#L5-L23) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [App.jsx#L48-L65](frontend/src/App.jsx#L48-L65) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [InterventieForm.jsx#L24-L42](frontend/src/components/InterventieForm.jsx#L24-L42), [InterventieForm.jsx#L77](frontend/src/components/InterventieForm.jsx#L77) | --delay 3000; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](tw.json), [InterventieCard.jsx#L11-L34](frontend/src/components/InterventieCard.jsx#L11-L34) | querySelectorAll in the console |
+| S7-R7 | README Stage 7 section + AI log | [README.md](#stage-7-form-and-validation), [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
+| S7-R8 | commit "Stage 7" pushed | [commit HASH](https://github.com/RaduD15/SafeInstal/commit/HASH) | commit history |
