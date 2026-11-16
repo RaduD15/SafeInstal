@@ -1,10 +1,52 @@
 {
   "interventii": [
-    { "id": 1, "titlu": "Scurgere țeavă baie principală", "rezolvata": false, "prioritate": "mare", "categorie": "Instalații sanitare", "descriere": "Clientul semnalează apă sub cadă; țeava de scurgere pare fisurată la îmbinare." },
-    { "id": 2, "titlu": "Verificare anuală centrală termică", "rezolvata": true, "prioritate": "medie", "categorie": "Întreținere", "descriere": "Revizie anuală obligatorie: curățare arzător, verificare presiune și etanșeitate." },
-    { "id": 3, "titlu": "Înlocuire robinet calorifer", "rezolvata": false, "prioritate": "mica", "categorie": "Instalații termice", "descriere": "Robinetul termostatat din sufragerie nu mai închide complet." },
-    { "id": 4, "titlu": "Desfundare scurgere chiuvetă bucătărie", "rezolvata": false, "prioritate": "medie", "categorie": "Instalații sanitare", "descriere": "Apa se scurge foarte greu; posibil depuneri de grăsime în sifon." },
-    { "id": 5, "titlu": "Aerisire calorifere dormitor", "rezolvata": true, "prioritate": "mica", "categorie": "Instalații termice", "descriere": "Caloriferele se încălzesc doar jos; aerisire și verificare presiune." },
-    { "id": 6, "titlu": "Fără apă caldă la centrală", "rezolvata": false, "prioritate": "mare", "categorie": "Instalații termice", "descriere": "Centrala pornește pe încălzire, dar nu livrează apă caldă menajeră." }
+    {
+      "id": 1,
+      "titlu": "Scurgere țeavă baie principală",
+      "rezolvata": true,
+      "prioritate": "mare",
+      "categorie": "Instalații sanitare",
+      "descriere": "Clientul semnalează apă sub cadă; țeava de scurgere pare fisurată la îmbinare."
+    },
+    {
+      "id": 2,
+      "titlu": "Verificare anuală centrală termică",
+      "rezolvata": true,
+      "prioritate": "medie",
+      "categorie": "Întreținere",
+      "descriere": "Revizie anuală obligatorie: curățare arzător, verificare presiune și etanșeitate."
+    },
+    {
+      "id": 3,
+      "titlu": "Înlocuire robinet calorifer",
+      "rezolvata": false,
+      "prioritate": "mica",
+      "categorie": "Instalații termice",
+      "descriere": "Robinetul termostatat din sufragerie nu mai închide complet."
+    },
+    {
+      "id": 4,
+      "titlu": "Desfundare scurgere chiuvetă bucătărie",
+      "rezolvata": false,
+      "prioritate": "medie",
+      "categorie": "Instalații sanitare",
+      "descriere": "Apa se scurge foarte greu; posibil depuneri de grăsime în sifon."
+    },
+    {
+      "id": 5,
+      "titlu": "Aerisire calorifere dormitor",
+      "rezolvata": true,
+      "prioritate": "mica",
+      "categorie": "Instalații termice",
+      "descriere": "Caloriferele se încălzesc doar jos; aerisire și verificare presiune."
+    },
+    {
+      "id": 6,
+      "titlu": "Fără apă caldă la centrală",
+      "rezolvata": false,
+      "prioritate": "mare",
+      "categorie": "Instalații termice",
+      "descriere": "Centrala pornește pe încălzire, dar nu livrează apă caldă menajeră."
+    }
   ]
 }
