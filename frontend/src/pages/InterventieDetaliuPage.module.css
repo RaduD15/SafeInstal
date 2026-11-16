@@ -1,0 +1,44 @@
+.detail {
+  max-width: 640px;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+}
+
+.code {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+.title {
+  margin: 2px 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.done {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.fields {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 10px 20px;
+  margin: 0;
+}
+
+.fields dt {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.fields dd {
+  margin: 0;
+}

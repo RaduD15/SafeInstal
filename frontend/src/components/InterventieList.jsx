@@ -1,4 +1,5 @@
 import InterventieCard from "./InterventieCard.jsx";
+import styles from "./InterventieList.module.css";
 
 export default function InterventieList({ interventii, onToggle, onDelete }) {
   if (interventii.length === 0) {
@@ -11,7 +12,7 @@ export default function InterventieList({ interventii, onToggle, onDelete }) {
   }
 
   return (
-    <ul className="item-list">
+    <ul className={styles.list}>
       {interventii.map((interventie) => (
         <InterventieCard
           key={interventie.id}

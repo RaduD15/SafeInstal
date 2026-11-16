@@ -18,6 +18,10 @@ export function fetchInterventii() {
   return request("/interventii");
 }
 
+export function fetchInterventie(id) {
+  return request(`/interventii/${id}`);
+}
+
 export function createInterventie(interventie) {
   return request("/interventii", { method: "POST", body: JSON.stringify(interventie) });
 }

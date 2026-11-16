@@ -7,7 +7,8 @@ A web application that efficiently manages plumbing and heating problems and int
 | title | text | required, max 100 chars |
 | resolved | boolean | toggled from the list, default false |
 | priority | fixed values | mica (low), medie (medium), mare (high) |
-| category | relation | Plumbing, Heating, Maintenance |
+| category | relation | Plumbing, Heating, Maintenance (plain text for now, shown on the detail page) |
+| description | text | optional, shown only on the detail page |
 | user | relation | the owner of the item (from week 11) |
 
 Sample data used across all stages:
@@ -29,6 +30,7 @@ Details per stage:
 - Stage 5: Used AI to move the data array into React state (`useState`), implement immutable toggle and delete functions, lift state up to the App component, and add a toggleable dark mode theme. See the `ai-log/` folder.
 - Stage 6: Used AI to move the data into `db.json` served by json-server, write the fetch function in `api.js`, load the list with `useEffect`, and handle the loading and error states. See the `ai-log/` folder.
 - Stage 7: Used AI to add the shared `request` function and the POST/PATCH/DELETE calls in `api.js`, write the controlled and validated `InterventieForm`, move toggle and delete to the server, and add `tw.json` and the `data-testid` attributes for the automated check. See the `ai-log/` folder.
+- Stage 8: Used Claude to set up React Router (layout, list, detail, about and 404 pages), split the global stylesheet into CSS Modules next to each component, and check the routes in a built version of the app. See the `ai-log/` folder.
 
 
 ## How to run
@@ -72,6 +74,20 @@ Interventions can be added from the page. The form is controlled and validated,
 and every change (add, toggle, delete) goes to the API before it shows up
 in the list.
 
+## Stage 8: routing and detail page
+Four pages behind React Router, inside a shared layout (header with navigation,
+footer):
+- `/` the list and the add form
+- `/interventii/:id` the detail page of one intervention, loaded from the API
+  with the id from the address (it also shows the category and description,
+  which do not fit on the card); a missing id shows an error message
+- `/despre` the about page
+- any other address shows the app's 404 page
+
+Component styles moved to CSS Modules (`*.module.css` next to each component
+and page); `index.css` keeps only the color variables, the themes and the
+shared classes (`panel`, `btn`, `btn-danger`, `badge`, `error`, `empty`).
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -80,7 +96,8 @@ in the list.
 - [x] Stage 5: local state and events
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
-- [ ] Stage 8: routing and detail page
+- [x] Stage 8: routing and detail page
+- [ ] Stage 9: own backend with Express
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |

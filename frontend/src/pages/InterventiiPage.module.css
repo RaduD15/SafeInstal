@@ -1,0 +1,54 @@
+/* Formularul în stânga, lista în dreapta */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* Contorul ca o "țeavă" care se umple */
+.pipe {
+  margin-bottom: 16px;
+}
+
+.pipeLabels {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 8px;
+}
+
+.summary {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.pipeValue {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.pipeTrack {
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.pipeFill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--heat));
+  transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

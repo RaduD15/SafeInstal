@@ -1,0 +1,32 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 0.9rem;
+  gap: 6px;
+}
+
+.form input,
+.form select {
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.form input[aria-invalid="true"] {
+  border-color: var(--danger);
+}
+
+.form :global(.error) {
+  margin: 0;
+}
