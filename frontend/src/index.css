@@ -1,99 +1,94 @@
-/* Stiluri globale: variabile, elemente de bază, clase comune.
+/* Stiluri globale: variabile, elemente de bază, clase comune, tranziții între pagini.
    Stilurile de componentă stau în fișiere *.module.css */
 * { box-sizing: border-box; }
 
-/* ===== Variabile: tema luminoasă ("planșă tehnică") ===== */
+/* ===== Variabile: tema luminoasă ===== */
 :root {
-  --font-sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
-  --bg: #eef3f8;
-  --grid-line: rgba(10, 60, 110, 0.06);
+  --bg: #f5f5f7;
   --card: #ffffff;
-  --text: #0f2236;
-  --muted: #5b6b7d;
-  --border: #d6e0ea;
+  --elevated: #ffffff;
+  --text: #1d1d1f;
+  --muted: #6e6e73;
+  --subtle: #86868b;
+  --hairline: rgba(0, 0, 0, 0.08);
+  --fill: rgba(118, 118, 128, 0.12);
+  --glass: rgba(245, 245, 247, 0.72);
 
-  --accent: #0a84c6;        /* apă */
-  --accent-dark: #086a9f;
-  --accent-soft: #e1f1fb;
-  --heat: #f26b1d;          /* căldură */
+  --accent: #0071e3;
+  --accent-hover: #0077ed;
+  --accent-soft: rgba(0, 113, 227, 0.12);
+  --heat: #ff9f0a;
+  /* Gradientul temei: apă -> căldură */
+  --gradient: linear-gradient(100deg, #0071e3 0%, #30b0c7 45%, #ff9f0a 100%);
 
-  --header-bg: #0c2a45;
-  --header-grid: rgba(255, 255, 255, 0.07);
-  --on-accent: #ffffff;
-  --on-accent-muted: rgba(255, 255, 255, 0.72);
-  --on-accent-line: rgba(255, 255, 255, 0.3);
-  --on-accent-hover: rgba(255, 255, 255, 0.12);
+  --success: #34c759;
+  --danger: #ff3b30;
+  --prio-mica: #34c759;
+  --prio-medie: #ff9f0a;
+  --prio-mare: #ff3b30;
 
-  --danger: #d92d20;
-  --danger-soft: #fdecea;
-  --shadow: rgba(12, 42, 69, 0.08);
-  --shadow-strong: rgba(12, 42, 69, 0.16);
+  --radius: 22px;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.04), 0 8px 24px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 2px 4px rgba(0, 0, 0, 0.05), 0 18px 40px rgba(0, 0, 0, 0.1);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  /* Culori pentru priorități */
-  --badge-mica-bg: #d1fae5;
-  --badge-mica-text: #065f46;
-  --badge-medie-bg: #fef3c7;
-  --badge-medie-text: #92400e;
-  --badge-mare-bg: #fee2e2;
-  --badge-mare-text: #991b1b;
-  --prio-mica: #10b981;
-  --prio-medie: #f59e0b;
-  --prio-mare: #ef4444;
+  color-scheme: light;
 }
 
 /* ===== Tema întunecată (sistem + manual) ===== */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #07131f;
-    --grid-line: rgba(120, 180, 230, 0.05);
-    --card: #0f2133;
-    --text: #e6eef6;
-    --muted: #8ca2b7;
-    --border: #1f3851;
-    --accent: #38b6f0;
-    --accent-dark: #7fd0f7;
-    --accent-soft: #0d3350;
-    --heat: #ff8a3d;
-    --header-bg: #0a1d2f;
-    --danger: #f87171;
-    --danger-soft: rgba(248, 113, 113, 0.12);
-    --shadow: rgba(0, 0, 0, 0.3);
-    --shadow-strong: rgba(0, 0, 0, 0.45);
-
-    --badge-mica-bg: #064e3b;
-    --badge-mica-text: #6ee7b7;
-    --badge-medie-bg: #78350f;
-    --badge-medie-text: #fcd34d;
-    --badge-mare-bg: #7f1d1d;
-    --badge-mare-text: #fca5a5;
+    --bg: #000000;
+    --card: #1c1c1e;
+    --elevated: #2c2c2e;
+    --text: #f5f5f7;
+    --muted: #a1a1a6;
+    --subtle: #8e8e93;
+    --hairline: rgba(255, 255, 255, 0.1);
+    --fill: rgba(118, 118, 128, 0.24);
+    --glass: rgba(22, 22, 23, 0.72);
+    --accent: #2997ff;
+    --accent-hover: #47a6ff;
+    --accent-soft: rgba(41, 151, 255, 0.16);
+    --gradient: linear-gradient(100deg, #2997ff 0%, #40c8e0 45%, #ffb340 100%);
+    --success: #30d158;
+    --danger: #ff453a;
+    --prio-mica: #30d158;
+    --prio-medie: #ffb340;
+    --prio-mare: #ff453a;
+    --shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 40px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
   }
 }
 
 :root[data-theme="dark"] {
-  --bg: #07131f;
-  --grid-line: rgba(120, 180, 230, 0.05);
-  --card: #0f2133;
-  --text: #e6eef6;
-  --muted: #8ca2b7;
-  --border: #1f3851;
-  --accent: #38b6f0;
-  --accent-dark: #7fd0f7;
-  --accent-soft: #0d3350;
-  --heat: #ff8a3d;
-  --header-bg: #0a1d2f;
-  --danger: #f87171;
-  --danger-soft: rgba(248, 113, 113, 0.12);
-  --shadow: rgba(0, 0, 0, 0.3);
-  --shadow-strong: rgba(0, 0, 0, 0.45);
-
-  --badge-mica-bg: #064e3b;
-  --badge-mica-text: #6ee7b7;
-  --badge-medie-bg: #78350f;
-  --badge-medie-text: #fcd34d;
-  --badge-mare-bg: #7f1d1d;
-  --badge-mare-text: #fca5a5;
+  --bg: #000000;
+  --card: #1c1c1e;
+  --elevated: #2c2c2e;
+  --text: #f5f5f7;
+  --muted: #a1a1a6;
+  --subtle: #8e8e93;
+  --hairline: rgba(255, 255, 255, 0.1);
+  --fill: rgba(118, 118, 128, 0.24);
+  --glass: rgba(22, 22, 23, 0.72);
+  --accent: #2997ff;
+  --accent-hover: #47a6ff;
+  --accent-soft: rgba(41, 151, 255, 0.16);
+  --gradient: linear-gradient(100deg, #2997ff 0%, #40c8e0 45%, #ffb340 100%);
+  --success: #30d158;
+  --danger: #ff453a;
+  --prio-mica: #30d158;
+  --prio-medie: #ffb340;
+  --prio-mare: #ff453a;
+  --shadow: 0 0 0 1px rgba(255, 255, 255, 0.06);
+  --shadow-hover: 0 0 0 1px rgba(255, 255, 255, 0.12), 0 18px 40px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
 }
 
 /* ===== Bază ===== */
@@ -101,166 +96,262 @@ body {
   margin: 0;
   min-height: 100vh;
   font-family: var(--font-sans);
-  background-color: var(--bg);
-  background-image:
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 24px 24px;
+  font-size: 17px;
+  letter-spacing: -0.012em;
+  background: var(--bg);
   color: var(--text);
-  line-height: 1.5;
-  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.47;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
 }
 
 a {
   color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 3px solid var(--accent-soft);
   outline-offset: 2px;
+  box-shadow: 0 0 0 1px var(--accent);
+  border-radius: 8px;
+}
+
+::selection {
+  background: var(--accent-soft);
 }
 
 /* ===== Clase comune ===== */
 .panel {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 8px 24px var(--shadow);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
 }
 
 .panel-head {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px dashed var(--border);
+  margin-bottom: 20px;
 }
 
 .panel h2 {
   margin: 0;
-  font-size: 1.2rem;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .panel-pill {
-  font-family: var(--font-mono);
   font-size: 0.8rem;
-  padding: 2px 10px;
+  font-weight: 600;
+  padding: 4px 12px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent-dark);
+  color: var(--accent);
   white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Text gradient, folosit în titlurile mari */
+.gradient-text {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .info { color: var(--muted); }
 
+/* Indicatorul de încărcare, ca în iOS */
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.loading::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2.5px solid var(--fill);
+  border-top-color: var(--muted);
+  animation: spin 0.8s linear infinite;
+}
+
 .error {
   color: var(--danger);
-  background: var(--danger-soft);
-  border: 1px solid var(--danger);
-  border-radius: 8px;
-  padding: 10px 12px;
+  background: color-mix(in srgb, var(--danger) 10%, transparent);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font-size: 0.94rem;
+  animation: shake 0.4s var(--ease);
 }
 
 .empty {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   margin: 0;
-  padding: 32px 16px;
+  padding: 48px 16px;
   text-align: center;
   color: var(--muted);
-  border: 2px dashed var(--border);
-  border-radius: 12px;
 }
 
 .empty-icon {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--accent-soft);
-  color: var(--accent-dark);
-  font-size: 1.2rem;
+  color: var(--accent);
+  font-size: 1.5rem;
+  animation: pop 0.6s var(--spring) both;
 }
 
 .btn {
-  background-color: var(--accent);
-  color: var(--on-accent);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
   border: none;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 13px 24px;
+  border-radius: 999px;
   font: inherit;
-  font-weight: bold;
+  font-weight: 600;
   font-size: 1rem;
   cursor: pointer;
-  transition: background-color 0.2s;
+  text-decoration: none;
+  transition: background-color 0.2s, transform 0.2s var(--ease), box-shadow 0.2s;
 }
 
 .btn:hover {
-  background-color: var(--accent-dark);
+  background: var(--accent-hover);
+  text-decoration: none;
+  box-shadow: 0 6px 20px var(--accent-soft);
+}
+
+.btn:active {
+  transform: scale(0.97);
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
+  transform: none;
 }
 
 .btn-danger {
   flex-shrink: 0;
-  border: 1px solid transparent;
+  border: none;
   background: transparent;
   color: var(--danger);
-  border-radius: 8px;
-  padding: 6px 12px;
+  border-radius: 999px;
+  padding: 7px 14px;
   font: inherit;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s;
+  transition: background-color 0.2s, opacity 0.2s, transform 0.2s var(--ease);
 }
 
 .btn-danger:hover {
-  background: var(--danger-soft);
-  border-color: var(--danger);
+  background: color-mix(in srgb, var(--danger) 12%, transparent);
 }
 
+.btn-danger:active {
+  transform: scale(0.94);
+}
+
+/* Etichetele de prioritate: pastilă colorată, cu punct */
 .badge {
-  display: inline-block;
-  padding: 2px 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
   border-radius: 999px;
   font-size: 0.75rem;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: var(--prio);
+  background: color-mix(in srgb, var(--prio) 14%, transparent);
 }
 
-.badge-mica {
-  background-color: var(--badge-mica-bg);
-  color: var(--badge-mica-text);
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
-.badge-medie {
-  background-color: var(--badge-medie-bg);
-  color: var(--badge-medie-text);
+.badge-mica { --prio: var(--prio-mica); }
+.badge-medie { --prio: var(--prio-medie); }
+.badge-mare { --prio: var(--prio-mare); }
+
+/* ===== Tranziții între pagini (View Transitions) ===== */
+::view-transition-old(root) {
+  animation: page-out 0.22s var(--ease) both;
 }
 
-.badge-mare {
-  background-color: var(--badge-mare-bg);
-  color: var(--badge-mare-text);
+::view-transition-new(root) {
+  animation: page-in 0.5s var(--ease) both;
+}
+
+::view-transition-group(nav-pill) {
+  animation-duration: 0.45s;
+  animation-timing-function: var(--spring);
+}
+
+@keyframes page-out {
+  to { opacity: 0; transform: scale(0.985); filter: blur(4px); }
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(16px); filter: blur(6px); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-3px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
+  *, *::before, *::after,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
     animation: none !important;
     transition: none !important;
   }
 }
 
 @media (max-width: 700px) {
-  .btn-danger {
-    padding: 6px 8px;
-  }
+  body { font-size: 16px; }
+  .panel { padding: 20px; }
 }

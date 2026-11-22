@@ -1,127 +1,156 @@
+/* Bara de sus: sticlă translucidă, fixă la derulare */
 .header {
-  background-color: var(--header-bg);
-  background-image:
-    linear-gradient(var(--header-grid) 1px, transparent 1px),
-    linear-gradient(90deg, var(--header-grid) 1px, transparent 1px);
-  background-size: 24px 24px;
-  color: var(--on-accent);
-  padding: 24px 16px 40px;
-  border-bottom: 3px solid var(--accent);
-}
-
-.header :focus-visible {
-  outline-color: var(--on-accent);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--glass);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid var(--hairline);
+  /* Antetul rămâne pe loc în timpul tranziției dintre pagini */
+  view-transition-name: site-header;
 }
 
 .inner {
-  max-width: 1008px;
+  max-width: 1080px;
+  height: 56px;
   margin: 0 auto;
-}
-
-.top {
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
   gap: 16px;
 }
 
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brand:hover {
+  text-decoration: none;
 }
 
 .mark {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--heat));
-  color: var(--on-accent);
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--gradient);
+  color: #fff;
+  transition: transform 0.5s var(--spring);
 }
 
-.logo {
-  font-size: 1.75rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.brand:hover .mark {
+  transform: rotate(-12deg) scale(1.08);
 }
 
 .actions {
   display: flex;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;
+  gap: 10px;
 }
 
+/* Meniu segmentat, ca în iOS */
 .nav {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--fill);
 }
 
 .link {
-  color: var(--on-accent);
-  text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 8px;
-  opacity: 0.8;
-  transition: background-color 0.2s, opacity 0.2s;
+  position: relative;
+  padding: 5px 14px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
 .link:hover {
-  opacity: 1;
-  background: var(--on-accent-hover);
+  color: var(--text);
+  text-decoration: none;
 }
 
+/* Pastila paginii active alunecă între linkuri (view-transition-name unic) */
 .active {
-  opacity: 1;
-  background: var(--on-accent-hover);
-  box-shadow: inset 0 -2px 0 var(--accent);
+  color: var(--text);
+  background: var(--elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 0 0 0.5px var(--hairline);
+  view-transition-name: nav-pill;
 }
 
 .themeToggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border: 1px solid var(--on-accent-line);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--on-accent);
-  font: inherit;
-  font-size: 0.85rem;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--fill);
+  color: var(--text);
   cursor: pointer;
-  white-space: nowrap;
-  transition: background-color 0.2s;
+  transition: transform 0.2s var(--ease), background-color 0.2s;
 }
 
 .themeToggle:hover {
-  background: var(--on-accent-hover);
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
-.tagline {
-  margin: 12px 0 0;
-  color: var(--on-accent-muted);
+.themeToggle:active {
+  transform: scale(0.9);
+}
+
+.icon {
+  animation: icon-in 0.5s var(--spring);
+}
+
+@keyframes icon-in {
+  from { transform: rotate(-90deg) scale(0.4); opacity: 0; }
 }
 
 .main {
-  max-width: 1040px;
-  margin: -20px auto 24px;
-  padding: 0 16px;
+  max-width: 1080px;
+  min-height: calc(100vh - 56px - 96px);
+  margin: 0 auto;
+  padding: 48px 20px 80px;
 }
 
 .footer {
-  text-align: center;
-  padding: 24px 16px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+  border-top: 1px solid var(--hairline);
+  color: var(--subtle);
+  font-size: 0.75rem;
 }
 
-@media (max-width: 700px) {
-  .logo {
-    font-size: 1.4rem;
+.footerInner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+@media (max-width: 560px) {
+  .brand {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .main {
+    padding-top: 32px;
   }
 }

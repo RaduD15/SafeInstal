@@ -1,119 +1,180 @@
+/* Un rând din listă, în stilul listelor iOS */
 .card {
-  --prio: var(--prio-medie);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  padding: 14px 16px 14px 18px;
-  border: 1px solid var(--border);
-  border-left: 5px solid var(--prio);
-  border-radius: 12px;
-  background-color: var(--card);
-  transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s, border-color 0.2s;
-  animation: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.card:nth-child(2) { animation-delay: 0.06s; }
-.card:nth-child(3) { animation-delay: 0.12s; }
-.card:nth-child(n + 4) { animation-delay: 0.18s; }
-
-.prio-mica { --prio: var(--prio-mica); }
-.prio-medie { --prio: var(--prio-medie); }
-.prio-mare { --prio: var(--prio-mare); }
-
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px var(--shadow-strong);
-}
-
-.main {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 14px;
+  padding: 14px 12px 14px 14px;
+  border-radius: 16px;
+  transition: background-color 0.25s, transform 0.25s var(--ease);
+  /* backwards, nu both: după intrare, transform-ul rămâne liber pentru :active */
+  animation: rise 0.6s var(--ease) backwards;
+}
+
+.card:nth-child(2) { animation-delay: 0.05s; }
+.card:nth-child(3) { animation-delay: 0.1s; }
+.card:nth-child(4) { animation-delay: 0.15s; }
+.card:nth-child(5) { animation-delay: 0.2s; }
+.card:nth-child(n + 6) { animation-delay: 0.25s; }
+
+/* Separator fin între rânduri, aliniat cu textul */
+.card + .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 52px;
+  right: 12px;
+  height: 1px;
+  background: var(--hairline);
+  transition: opacity 0.2s;
+}
+
+.card:hover {
+  background: var(--fill);
+}
+
+.card:hover::before,
+.card:hover + .card::before {
+  opacity: 0;
+}
+
+.card:active {
+  transform: scale(0.99);
+}
+
+/* Bifa rotundă, cu animație la marcare */
+.check {
+  position: relative;
+  z-index: 1;
+  appearance: none;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  border: 2px solid var(--subtle);
+  border-radius: 50%;
+  background: transparent center / 14px no-repeat;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.25s var(--ease);
+}
+
+.check:hover {
+  border-color: var(--accent);
+}
+
+.check:checked {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  animation: check-pop 0.45s var(--spring);
+}
+
+@keyframes check-pop {
+  0% { transform: scale(0.7); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.body {
+  flex: 1;
   min-width: 0;
 }
 
-.main input[type="checkbox"] {
-  appearance: none;
-  flex-shrink: 0;
-  width: 22px;
-  height: 22px;
-  margin: 0;
-  border: 2px solid var(--muted);
-  border-radius: 50%;
-  background: var(--card);
-  cursor: pointer;
-  transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
-}
-
-.main input[type="checkbox"]:hover {
-  border-color: var(--accent);
-}
-
-.main input[type="checkbox"]:checked {
-  border-color: var(--accent);
-  background: var(--accent);
-  box-shadow: inset 0 0 0 4px var(--card);
-}
-
-.code {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-
 .title {
-  margin: 2px 0 8px;
-  font-size: 1.05rem;
-  font-weight: 500;
+  margin: 0 0 6px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
 }
 
+/* Linia de tăiere crește de la stânga la dreapta când intervenția e rezolvată */
 .title a {
   color: var(--text);
-  text-decoration: none;
+  background: linear-gradient(currentColor, currentColor) no-repeat 0 55% / 0% 1.5px;
+  transition: background-size 0.5s var(--ease), color 0.3s;
 }
 
 .title a:hover {
-  color: var(--accent);
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+/* Tot rândul se poate apăsa: linkul se întinde peste card */
+.title a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
 }
 
 .meta {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
-}
-
-.status {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
+  gap: 6px 10px;
   color: var(--muted);
+  font-size: 0.8rem;
 }
 
-.done {
-  opacity: 0.7;
-  border-left-color: var(--border);
+.code {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--subtle);
 }
 
 .done .title a {
-  text-decoration: line-through;
-  color: var(--muted);
+  color: var(--subtle);
+  background-size: 100% 1.5px;
 }
 
-.done .status {
+.done .meta :global(.badge) {
+  opacity: 0.55;
+}
+
+.card :global(.btn-danger) {
+  position: relative;
+  z-index: 1;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: var(--subtle);
+  transition: transform 0.3s var(--ease), color 0.2s;
+}
+
+.card:hover .chevron {
   color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* Pe dispozitive cu mouse, „Șterge” apare doar la hover sau focus */
+@media (hover: hover) {
+  .card :global(.btn-danger) {
+    opacity: 0;
+  }
+
+  .card:hover :global(.btn-danger),
+  .card:focus-within :global(.btn-danger) {
+    opacity: 1;
+  }
 }
 
 @keyframes rise {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 560px) {
   .card {
-    padding: 12px 10px 12px 14px;
+    gap: 12px;
+    padding: 12px 6px 12px 8px;
+  }
+
+  .card + .card::before {
+    left: 44px;
+  }
+
+  .chevron {
+    display: none;
   }
 }

@@ -61,61 +61,107 @@ export default function InterventiiPage() {
   }
 
   const nerezolvate = interventii.filter((t) => !t.rezolvata).length;
-  const procent = interventii.length === 0
-    ? 0
-    : Math.round(((interventii.length - nerezolvate) / interventii.length) * 100);
+  const rezolvate = interventii.length - nerezolvate;
+  const urgente = interventii.filter((t) => !t.rezolvata && t.prioritate === "mare").length;
+  const procent = interventii.length === 0 ? 0 : Math.round((rezolvate / interventii.length) * 100);
 
   return (
-    <div className={styles.grid}>
-      <section className="panel">
-        <div className="panel-head">
-          <h2>Adaugă intervenție</h2>
+    <>
+      <section className={styles.hero}>
+        <div className={styles.heroText}>
+          <p className={styles.eyebrow}>Panou de intervenții</p>
+          <h1 className={styles.headline}>
+            Fiecare țeavă.
+            <br />
+            <span className="gradient-text">Sub control.</span>
+          </h1>
+          <p className={styles.lead}>
+            {interventii.length} intervenții, dintre care {nerezolvate} nerezolvate.
+          </p>
         </div>
-        <InterventieForm onAdd={handleAdd} />
-      </section>
 
-      <section className="panel">
-        <div className="panel-head">
-          <h2>Intervențiile clienților</h2>
-          <span className="panel-pill">{nerezolvate} active</span>
-        </div>
-        {/* Contorul, mutat din antet: antetul este comun tuturor paginilor */}
-        <div className={styles.pipe}>
-          <div className={styles.pipeLabels}>
-            <p className={styles.summary}>
-              {interventii.length} intervenții, dintre care {nerezolvate} nerezolvate
-            </p>
-            <span className={styles.pipeValue}>{procent}% rezolvate</span>
-          </div>
+        <div className={styles.stats}>
+          {/* Inel de progres: pathLength="100" face din procent direct lungimea liniei */}
           <div
-            className={styles.pipeTrack}
+            className={styles.ring}
             role="progressbar"
             aria-label="Intervenții rezolvate"
             aria-valuemin={0}
             aria-valuemax={100}
             aria-valuenow={procent}
           >
-            <div className={styles.pipeFill} style={{ width: `${procent}%` }} />
+            <svg viewBox="0 0 120 120" aria-hidden="true">
+              <defs>
+                <linearGradient id="ring-gradient" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" className={styles.stopStart} />
+                  <stop offset="100%" className={styles.stopEnd} />
+                </linearGradient>
+              </defs>
+              <circle className={styles.ringTrack} cx="60" cy="60" r="50" />
+              <circle
+                className={styles.ringValue}
+                cx="60"
+                cy="60"
+                r="50"
+                pathLength="100"
+                strokeDasharray="100"
+                strokeDashoffset={100 - procent}
+              />
+            </svg>
+            <div className={styles.ringLabel}>
+              <strong>{procent}%</strong>
+              <span>rezolvate</span>
+            </div>
           </div>
+          <dl className={styles.numbers}>
+            <div>
+              <dt>Active</dt>
+              <dd>{nerezolvate}</dd>
+            </div>
+            <div>
+              <dt>Urgente</dt>
+              <dd className={styles.urgent}>{urgente}</dd>
+            </div>
+            <div>
+              <dt>Rezolvate</dt>
+              <dd>{rezolvate}</dd>
+            </div>
+          </dl>
         </div>
-        {loading && (
-          <p className="info" data-testid="loading">
-            Se încarcă intervențiile...
-          </p>
-        )}
-        {error && (
-          <p className="error" role="alert" data-testid="error">
-            {error}
-          </p>
-        )}
-        {!loading && (
-          <InterventieList
-            interventii={interventii}
-            onToggle={handleToggle}
-            onDelete={handleDelete}
-          />
-        )}
       </section>
-    </div>
+
+      <div className={styles.grid}>
+        <section className={`panel ${styles.formPanel}`}>
+          <div className="panel-head">
+            <h2>Intervenție nouă</h2>
+          </div>
+          <InterventieForm onAdd={handleAdd} />
+        </section>
+
+        <section className={`panel ${styles.listPanel}`}>
+          <div className="panel-head">
+            <h2>Toate intervențiile</h2>
+            <span className="panel-pill">{nerezolvate} active</span>
+          </div>
+          {loading && (
+            <p className="info loading" data-testid="loading">
+              Se încarcă intervențiile...
+            </p>
+          )}
+          {error && (
+            <p className="error" role="alert" data-testid="error">
+              {error}
+            </p>
+          )}
+          {!loading && (
+            <InterventieList
+              interventii={interventii}
+              onToggle={handleToggle}
+              onDelete={handleDelete}
+            />
+          )}
+        </section>
+      </div>
+    </>
   );
 }

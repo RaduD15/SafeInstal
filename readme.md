@@ -172,12 +172,12 @@ shared classes (`panel`, `btn`, `btn-danger`, `badge`, `error`, `empty`).
 ## Stage 7 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S7-R1 | controlled form: value + onChange on every field | [InterventieForm.jsx#L48-L70](frontend/src/components/InterventieForm.jsx#L48-L70) | read |
-| S7-R2 | empty title shows an error, nothing is sent | [InterventieForm.jsx#L17-L22](frontend/src/components/InterventieForm.jsx#L17-L22) (valideaza) | submit empty, watch Network |
-| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L43-L46](frontend/src/App.jsx#L43-L46) (handleAdd), [api.js#L5-L23](frontend/src/api.js#L5-L23) | add, refresh |
-| S7-R4 | toggle and delete survive refresh | [App.jsx#L48-L65](frontend/src/App.jsx#L48-L65) | toggle/delete, refresh |
-| S7-R5 | button disabled while sending, form cleared only on success | [InterventieForm.jsx#L24-L42](frontend/src/components/InterventieForm.jsx#L24-L42), [InterventieForm.jsx#L77](frontend/src/components/InterventieForm.jsx#L77) | --delay 3000; stop API and submit |
-| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](tw.json), [InterventieCard.jsx#L11-L34](frontend/src/components/InterventieCard.jsx#L11-L34) | querySelectorAll in the console |
+| S7-R1 | controlled form: value + onChange on every field | [InterventieForm.jsx#L48-L70](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/components/InterventieForm.jsx#L48-L70) | read |
+| S7-R2 | empty title shows an error, nothing is sent | [InterventieForm.jsx#L17-L22](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/components/InterventieForm.jsx#L17-L22) (valideaza) | submit empty, watch Network |
+| S7-R3 | added item shows in the list and survives refresh | [App.jsx#L43-L46](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/App.jsx#L43-L46) (handleAdd), [api.js#L5-L23](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/api.js#L5-L23) | add, refresh |
+| S7-R4 | toggle and delete survive refresh | [App.jsx#L48-L65](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/App.jsx#L48-L65) | toggle/delete, refresh |
+| S7-R5 | button disabled while sending, form cleared only on success | [InterventieForm.jsx#L24-L42](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/components/InterventieForm.jsx#L24-L42), [InterventieForm.jsx#L77](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/components/InterventieForm.jsx#L77) | --delay 3000; stop API and submit |
+| S7-R6 | tw.json and the data-testid attributes from table 7.3 | [tw.json](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/tw.json), [InterventieCard.jsx#L11-L34](https://github.com/RaduD15/SafeInstal/blob/a8956014647c23a3ba8ec268a92f11a0c04e85b4/frontend/src/components/InterventieCard.jsx#L11-L34) | querySelectorAll in the console |
 | S7-R7 | README Stage 7 section + AI log | [README.md](#stage-7-form-and-validation), [ai-log/etapa-07.md](ai-log/etapa-07.md) | read |
 | S7-R8 | commit "Stage 7" pushed | [commit a895601](https://github.com/RaduD15/SafeInstal/commit/a8956014647c23a3ba8ec268a92f11a0c04e85b4) | commit history |
 

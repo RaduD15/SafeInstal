@@ -4,6 +4,17 @@ import { fetchInterventie } from "../api.js";
 import { ETICHETE_PRIORITATE } from "../constants.js";
 import styles from "./InterventieDetaliuPage.module.css";
 
+function Inapoi() {
+  return (
+    <Link to="/" viewTransition className={styles.back}>
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+        <path d="m15 6-6 6 6 6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+      Înapoi la listă
+    </Link>
+  );
+}
+
 export default function InterventieDetaliuPage() {
   const { id } = useParams(); // text din URL, de exemplu "3"
   const [interventie, setInterventie] = useState(null);
@@ -35,53 +46,73 @@ export default function InterventieDetaliuPage() {
 
   if (loading) {
     return (
-      <section className="panel">
-        <p className="info" data-testid="loading">
+      <div className={styles.detail}>
+        <p className="info loading" data-testid="loading">
           Se încarcă intervenția...
         </p>
-      </section>
+      </div>
     );
   }
 
   if (error) {
     return (
-      <section className={`panel ${styles.detail}`}>
-        <p className="error" role="alert" data-testid="error">
-          Intervenția nu a putut fi încărcată: {error}
-        </p>
-        <Link to="/">Înapoi la listă</Link>
-      </section>
+      <div className={styles.detail}>
+        <Inapoi />
+        <section className="panel">
+          <h1 className={styles.errorTitle}>Intervenția nu a fost găsită.</h1>
+          <p className="error" role="alert" data-testid="error">
+            Intervenția nu a putut fi încărcată: {error}
+          </p>
+        </section>
+      </div>
     );
   }
 
   return (
-    <section className={`panel ${styles.detail}`} data-testid="detail">
-      <Link to="/" className={styles.back}>
-        ← Înapoi la listă
-      </Link>
-      <span className={styles.code}>INT-{String(interventie.id).padStart(3, "0")}</span>
-      <h2
-        className={interventie.rezolvata ? `${styles.title} ${styles.done}` : styles.title}
-        data-testid="detail-title"
-      >
-        {interventie.titlu}
-      </h2>
-      <dl className={styles.fields}>
-        <dt>Prioritate</dt>
-        <dd>
+    <article className={styles.detail} data-testid="detail">
+      <Inapoi />
+
+      <header className={styles.head}>
+        <p className={styles.eyebrow}>
+          INT-{String(interventie.id).padStart(3, "0")}
+          {interventie.categorie && ` · ${interventie.categorie}`}
+        </p>
+        <h1
+          className={interventie.rezolvata ? `${styles.title} ${styles.done}` : styles.title}
+          data-testid="detail-title"
+        >
+          {interventie.titlu}
+        </h1>
+        <div className={styles.tags}>
           <span className={`badge badge-${interventie.prioritate}`}>
-            {ETICHETE_PRIORITATE[interventie.prioritate]}
+            Prioritate {ETICHETE_PRIORITATE[interventie.prioritate]?.toLowerCase()}
           </span>
-        </dd>
-        <dt>Status</dt>
-        <dd>{interventie.rezolvata ? "Rezolvată" : "În lucru"}</dd>
-        <dt>Categorie</dt>
-        <dd>{interventie.categorie ?? "—"}</dd>
-        <dt>Descriere</dt>
-        <dd>{interventie.descriere ?? "—"}</dd>
-        <dt>ID</dt>
-        <dd>{interventie.id}</dd>
+          <span className={interventie.rezolvata ? `${styles.status} ${styles.resolved}` : styles.status}>
+            {interventie.rezolvata ? "Rezolvată" : "În lucru"}
+          </span>
+        </div>
+      </header>
+
+      {interventie.descriere && <p className={styles.description}>{interventie.descriere}</p>}
+
+      <dl className={styles.fields}>
+        <div>
+          <dt>Categorie</dt>
+          <dd>{interventie.categorie ?? "—"}</dd>
+        </div>
+        <div>
+          <dt>Prioritate</dt>
+          <dd>{ETICHETE_PRIORITATE[interventie.prioritate]}</dd>
+        </div>
+        <div>
+          <dt>Status</dt>
+          <dd>{interventie.rezolvata ? "Rezolvată" : "În lucru"}</dd>
+        </div>
+        <div>
+          <dt>ID</dt>
+          <dd>{interventie.id}</dd>
+        </div>
       </dl>
-    </section>
+    </article>
   );
 }
