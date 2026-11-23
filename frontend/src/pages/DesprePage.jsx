@@ -1,6 +1,6 @@
 import styles from "./DesprePage.module.css";
 
-const STACK = ["React", "Vite", "React Router", "json-server", "Node.js", "Express", "MariaDB", "Docker"];
+const STACK = ["React", "Vite", "React Router", "Node.js", "Express", "MariaDB", "Docker"];
 
 // Pagina de prezentare, cu textul din README
 export default function DesprePage() {

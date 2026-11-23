@@ -30,16 +30,18 @@ Details per stage:
 - Stage 5: Used AI to move the data array into React state (`useState`), implement immutable toggle and delete functions, lift state up to the App component, and add a toggleable dark mode theme. See the `ai-log/` folder.
 - Stage 6: Used AI to move the data into `db.json` served by json-server, write the fetch function in `api.js`, load the list with `useEffect`, and handle the loading and error states. See the `ai-log/` folder.
 - Stage 7: Used AI to add the shared `request` function and the POST/PATCH/DELETE calls in `api.js`, write the controlled and validated `InterventieForm`, move toggle and delete to the server, and add `tw.json` and the `data-testid` attributes for the automated check. See the `ai-log/` folder.
-- Stage 8: Used Claude to set up React Router (layout, list, detail, about and 404 pages), split the global stylesheet into CSS Modules next to each component, and check the routes in a built version of the app. See the `ai-log/` folder.
+- Stage 8: Used AI to set up React Router (layout, list, detail, about and 404 pages), split the global stylesheet into CSS Modules next to each component, and check the routes in a built version of the app. See the `ai-log/` folder.
+- Stage 9: Used AI to write the Express backend (router, server side validation, CORS, central error handling), remove json-server from the frontend, and test every route with curl and an automated `node --test` suite. See the `ai-log/` folder.
 
 
 ## How to run
+Two terminals, the API first:
 ```
-cd frontend
-npm install
-npm run dev
+cd backend && npm install && npm run dev     # terminal 1, http://localhost:3001
+cd frontend && npm install && npm run dev    # terminal 2, http://localhost:5173
 ```
-Then open the address printed in the terminal (http://localhost:5173).
+Then open http://localhost:5173. The ports and the allowed origin can be
+changed with the variables in `backend/.env.example` and `frontend/.env.example`.
 
 The static mockup from stages 1 and 2 is kept in `mockup/` (open `mockup/index.html` in the browser).
 
@@ -69,6 +71,8 @@ and shows a loading state and an error state.
     npm run api   # terminal 1, http://localhost:3001
     npm run dev   # terminal 2, http://localhost:5173
 
+(json-server and `npm run api` were removed in stage 9.)
+
 ## Stage 7: form and validation
 Interventions can be added from the page. The form is controlled and validated,
 and every change (add, toggle, delete) goes to the API before it shows up
@@ -88,6 +92,37 @@ Component styles moved to CSS Modules (`*.module.css` next to each component
 and page); `index.css` keeps only the color variables, the themes and the
 shared classes (`panel`, `btn`, `btn-danger`, `badge`, `error`, `empty`).
 
+## Stage 9: own backend
+json-server is gone. The API is an Express server in `backend/`, with REST
+routes, server side validation and CORS. Data is still kept in memory and
+resets on restart (stage 10 moves it to MariaDB).
+
+| Method | Route | Success | Errors |
+| --- | --- | --- | --- |
+| GET | `/interventii` | 200 | |
+| GET | `/interventii/:id` | 200 | 400 invalid id, 404 missing |
+| POST | `/interventii` | 201 + the new item | 400 invalid data |
+| PATCH | `/interventii/:id` | 200 + the updated item | 400, 404 |
+| DELETE | `/interventii/:id` | 204, no body | 400, 404 |
+| GET | `/health` | 200 `{ "status": "ok" }` | |
+
+Every error has the same shape, `{ "error": "..." }`, and the frontend shows
+that message. The server keeps only the known fields (`titlu`, `prioritate`,
+`rezolvata`, `categorie`, `descriere`); anything else sent by the client is
+ignored.
+
+Test the API without the interface (Git Bash), with the server running:
+
+    curl -s -w ' -> %{http_code}\n' http://localhost:3001/interventii
+    curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/interventii \
+      -H "Content-Type: application/json" -d '{"titlu":"Din curl","prioritate":"mare"}'
+    curl -s -w ' -> %{http_code}\n' -X POST http://localhost:3001/interventii \
+      -H "Content-Type: application/json" -d '{"titlu":""}'
+    curl -s -w ' -> %{http_code}\n' http://localhost:3001/interventii/999
+    curl -s -w ' -> %{http_code}\n' -X DELETE http://localhost:3001/interventii/7
+
+Or run the automated tests: `cd backend && npm test`.
+
 ## Status
 - [x] Stage 1: static mockup
 - [x] Stage 2: data logic in JavaScript
@@ -97,7 +132,8 @@ shared classes (`panel`, `btn`, `btn-danger`, `badge`, `error`, `empty`).
 - [x] Stage 6: data from a mock API
 - [x] Stage 7: form and validation
 - [x] Stage 8: routing and detail page
-- [ ] Stage 9: own backend with Express
+- [x] Stage 9: own backend with Express
+- [ ] Stage 10: MariaDB and full CRUD
 
 ## Stage 1 Checklist
 | ID | Requirement | Where (permalink) | How to check |
@@ -192,3 +228,14 @@ shared classes (`panel`, `btn`, `btn-danger`, `badge`, `error`, `empty`).
 | S8-R6 | data-testid attributes from tables 7.3 and 8.2; detail route /interventii/:id | [Layout.jsx#L38](https://github.com/RaduD15/SafeInstal/blob/11fec46971c66a53666f1e2cc9278b61d7c21998/frontend/src/components/Layout.jsx#L38), [InterventieCard.jsx#L13-L41](https://github.com/RaduD15/SafeInstal/blob/11fec46971c66a53666f1e2cc9278b61d7c21998/frontend/src/components/InterventieCard.jsx#L13-L41), [InterventieDetaliuPage.jsx#L39-L65](https://github.com/RaduD15/SafeInstal/blob/11fec46971c66a53666f1e2cc9278b61d7c21998/frontend/src/pages/InterventieDetaliuPage.jsx#L39-L65), [NotFoundPage.jsx#L5](https://github.com/RaduD15/SafeInstal/blob/11fec46971c66a53666f1e2cc9278b61d7c21998/frontend/src/pages/NotFoundPage.jsx#L5), [App.jsx#L15](https://github.com/RaduD15/SafeInstal/blob/11fec46971c66a53666f1e2cc9278b61d7c21998/frontend/src/App.jsx#L15) | querySelector in the console |
 | S8-R7 | README Stage 8 section + AI log | [README.md](#stage-8-routing-and-detail-page), [ai-log/etapa-08.md](ai-log/etapa-08.md) | read |
 | S8-R8 | commit "Stage 8" pushed | [commit 11fec46](https://github.com/RaduD15/SafeInstal/commit/11fec46971c66a53666f1e2cc9278b61d7c21998) | commit history |
+
+## Stage 9 Checklist
+| ID | Requirement | Where (permalink) | How to check |
+| --- | --- | --- | --- |
+| S9-R1 | npm run dev in backend/ starts the API on 3001 | [backend/package.json#L8-L9](backend/package.json#L8-L9), [server.js#L3-L7](backend/src/server.js#L3-L7) | run it, open /health |
+| S9-R2 | all five routes answer with the right codes | [routes/interventii.js#L18-L72](backend/src/routes/interventii.js#L18-L72) | curl commands from README, `npm test` |
+| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L21-L59](backend/src/validation.js#L21-L59), [routes/interventii.js#L45-L48](backend/src/routes/interventii.js#L45-L48) | POST with empty title |
+| S9-R4 | React app works with json-server removed | [frontend/package.json](frontend/package.json), [api.js#L10-L14](frontend/src/api.js#L10-L14) | stop everything but backend |
+| S9-R5 | no CORS errors in the browser console | [app.js#L9](backend/src/app.js#L9) (cors) | open console |
+| S9-R6 | README Stage 9 section + AI log | [README.md](#stage-9-own-backend), [ai-log/etapa-09.md](ai-log/etapa-09.md) | read |
+| S9-R7 | commit "Stage 9" pushed |  | commit history |
