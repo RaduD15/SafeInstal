@@ -232,10 +232,10 @@ Or run the automated tests: `cd backend && npm test`.
 ## Stage 9 Checklist
 | ID | Requirement | Where (permalink) | How to check |
 | --- | --- | --- | --- |
-| S9-R1 | npm run dev in backend/ starts the API on 3001 | [backend/package.json#L8-L9](backend/package.json#L8-L9), [server.js#L3-L7](backend/src/server.js#L3-L7) | run it, open /health |
-| S9-R2 | all five routes answer with the right codes | [routes/interventii.js#L18-L72](backend/src/routes/interventii.js#L18-L72) | curl commands from README, `npm test` |
-| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L21-L59](backend/src/validation.js#L21-L59), [routes/interventii.js#L45-L48](backend/src/routes/interventii.js#L45-L48) | POST with empty title |
-| S9-R4 | React app works with json-server removed | [frontend/package.json](frontend/package.json), [api.js#L10-L14](frontend/src/api.js#L10-L14) | stop everything but backend |
-| S9-R5 | no CORS errors in the browser console | [app.js#L9](backend/src/app.js#L9) (cors) | open console |
+| S9-R1 | npm run dev in backend/ starts the API on 3001 | [backend/package.json#L8-L9](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/package.json#L8-L9), [server.js#L3-L7](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/src/server.js#L3-L7) | run it, open /health |
+| S9-R2 | all five routes answer with the right codes | [routes/interventii.js#L18-L72](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/src/routes/interventii.js#L18-L72) | curl commands from README, `npm test` |
+| S9-R3 | invalid data returns 400 with a clear message | [validation.js#L21-L59](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/src/validation.js#L21-L59), [routes/interventii.js#L45-L48](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/src/routes/interventii.js#L45-L48) | POST with empty title |
+| S9-R4 | React app works with json-server removed | [frontend/package.json](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/frontend/package.json), [api.js#L10-L14](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/frontend/src/api.js#L10-L14) | stop everything but backend |
+| S9-R5 | no CORS errors in the browser console | [app.js#L9](https://github.com/RaduD15/SafeInstal/blob/baea4f22de5f3038f3fdeee6f7f764b3e8684585/backend/src/app.js#L9) (cors) | open console |
 | S9-R6 | README Stage 9 section + AI log | [README.md](#stage-9-own-backend), [ai-log/etapa-09.md](ai-log/etapa-09.md) | read |
-| S9-R7 | commit "Stage 9" pushed |  | commit history |
+| S9-R7 | commit "Stage 9" pushed | [commit baea4f2](https://github.com/RaduD15/SafeInstal/commit/baea4f22de5f3038f3fdeee6f7f764b3e8684585)| commit history |
